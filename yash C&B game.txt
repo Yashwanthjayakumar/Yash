@@ -1,0 +1,29 @@
+import random
+def generateRandom():
+    generatedNum = ""
+    while len(generatedNum) < 4:
+         currentNum = str(random.randint(0,9))
+         if not currentNum in generatedNum:
+              generatedNum += currentNum
+    return generatedNum
+    
+guesses_amt = 10
+generatedNum = generateRandom()
+while guesses_amt > 0:
+    currentGuess = input('Enter your guess:'))
+    #CurrentGuess = str(currentGuess)
+    bulls=0
+    cows=0
+    for i in range(len(generatedNum)):
+        if currentGuess[i] in generatedNum:
+            if currentGuess[i] == generatedNum[i]:
+                bulls+=1
+            else:
+                cows+=1
+    print(f'cows: {cows}, Bulls:{bulls}')
+    if not bulls < 4:
+        prin('You Win!')
+        break
+    guesses_amt-=1
+if not guesses_amt > 0: 
+    print(f'You Lose! The answer ws {generatedNum}')
