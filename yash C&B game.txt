@@ -1,4 +1,4 @@
-#Player will create a secret code, usually a 4-digit number.  This number should have no repeated digits.
+    #Player will create a secret code, usually a 4-digit number.  This number should have no repeated digits.
 #Another player makes a guess (4 digit number) to crack the secret number. Upon making a guess, 2 hints will be provided- Cows and Bulls.
 #Bulls indicate the number of correct digits in the correct position and cows indicates the number of correct digits in the wrong position. For example, if the secret code is 1234 and the guessed number is 1246 then we have 2 BULLS (for the exact matches of digits 1 and 2) and 1 COW (for the match of digit 4 in the wrong position)
 #The player keeps on guessing until the secret code is cracked. The player who guesses in the minimum number of tries wins.
@@ -13,12 +13,20 @@ def generateRandom():
     
 guesses_amt = 10
 generatedNum = generateRandom()
+#print(generatedNum)
 while guesses_amt > 0:
-    currentGuess = input('Enter your guess:')
-    #CurrentGuess = str(currentGuess)
+    currentGuess = input('Enter your guess(only 4 digits):')
+    if len(currentGuess) > 4 or len(currentGuess)==0:
+        print("Error!Enter valid charecter!")
+        break
     bulls=0
     cows=0
+    if currentGuess==None:
+        print("Enter charecter")
+        break
     for i in range(len(generatedNum)):
+        if currentGuess==None:
+            break
         if currentGuess[i] in generatedNum:
             if currentGuess[i] == generatedNum[i]:
                 bulls+=1
