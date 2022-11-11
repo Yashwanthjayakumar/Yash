@@ -16,9 +16,20 @@ generatedNum = generateRandom()
 #print(generatedNum)
 while guesses_amt > 0:
     currentGuess = input('Enter your guess(only 4 digits):')
-    if len(currentGuess) > 4 or len(currentGuess)==0:
-        print("Error!Enter valid charecter!")
-        break
+    if currentGuess.isalpha():
+        print ("Enter only numeric charecters")
+        continue
+    if len(currentGuess) == 4:
+        a=currentGuess[0]
+        b=currentGuess[1]
+        c=currentGuess[2]
+        d=currentGuess[3]
+        if currentGuess.count(a)> 1 or currentGuess.count(b)> 1 or currentGuess.count(c)> 1 or currentGuess.count(d) > 1:
+            print ("Do not enter repeating charecters")
+            continue
+    else:
+        print("Enter only four digits")
+        continue
     bulls=0
     cows=0
     if currentGuess==None:
@@ -38,5 +49,5 @@ while guesses_amt > 0:
         break
     guesses_amt-=1
 if not guesses_amt > 0: 
-    print(f'You Lose! The answer ws {generatedNum}')
+    print(f'You Lose! The answer is {generatedNum}')
  
