@@ -19,6 +19,9 @@ while guesses_amt > 0:
     if currentGuess.isalpha():
         print ("Enter only numeric charecters")
         continue
+    if len(currentGuess)==0: 
+        print ("Enter charecters")
+        continue
     if len(currentGuess) == 4:
         a=currentGuess[0]
         b=currentGuess[1]
@@ -32,22 +35,17 @@ while guesses_amt > 0:
         continue
     bulls=0
     cows=0
-    if currentGuess==None:
-        print("Enter charecter")
-        break
     for i in range(len(generatedNum)):
-        if currentGuess==None:
-            break
         if currentGuess[i] in generatedNum:
             if currentGuess[i] == generatedNum[i]:
                 bulls+=1
             else:
                 cows+=1
-    print(f'cows: {cows}, Bulls:{bulls}')
+    print('cows:',cows, 'Bulls:',bulls)
     if not bulls < 4:
         print('You Win!')
         break
     guesses_amt-=1
 if not guesses_amt > 0: 
-    print(f'You Lose! The answer is {generatedNum}')
+    print('You Lose! The answer is',generatedNum)
  
